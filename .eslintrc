@@ -1,0 +1,33 @@
+{
+  "extends": [
+    "airbnb",
+    "airbnb/hooks",
+    "plugin:prettier/recommended",
+    "prettier"
+  ],
+  "plugins": ["react", "prettier"],
+  "rules": {
+    "react/jsx-props-no-spreading": [
+      "error",
+      {
+        "exceptions": ["Component"]
+      }
+    ],
+    "import/no-cycle": [
+      "error",
+      {
+        "maxDepth": 2
+      }
+    ],
+    "import/no-named-as-default-member": 0
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "sourceType": "module",
+    "allowImportExportEverywhere": true
+  }
+}
