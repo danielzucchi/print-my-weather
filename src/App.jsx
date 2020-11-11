@@ -1,12 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect } from 'react';
+import getWeather from './weatherService';
 import './App.css';
 
-function App() {
+const App = () => {
+  useEffect(() => {
+    getWeather({
+      lat: '-0.013',
+      lon: '51.49',
+      units: 'metric',
+    });
+  });
+
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit
           <code>src/App.js</code>
@@ -23,6 +30,6 @@ function App() {
       </header>
     </div>
   );
-}
+};
 
 export default App;
