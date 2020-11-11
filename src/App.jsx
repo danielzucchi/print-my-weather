@@ -1,32 +1,38 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import getWeather from './weatherService';
 import './App.css';
 
 const App = () => {
+  const [weather, setWeather] = useState(null);
+
   useEffect(() => {
-    getWeather({
-      lat: '-0.013',
-      lon: '51.49',
-      units: 'metric',
-    });
-  });
+    async function fetchWeather() {
+      const todayWeather = await getWeather({
+        lat: '-0.013',
+        lon: '51.49',
+        units: 'metric',
+      });
+
+      setWeather(todayWeather);
+      console.log(todayWeather);
+    }
+
+    fetchWeather();
+  }, [setWeather]);
+
+  const icon = weather
+    ? `http://openweathermap.org/img/wn/${weather.current.weather[0].icon}@2x.png`
+    : null;
 
   return (
     <div className="App">
       <header className="App-header">
-        <p>
-          Edit
-          <code>src/App.js</code>
-          and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        {weather && (
+          <>
+            <img src={icon} alt="weather" />
+            <p>{weather.current.weather[0].description}</p>
+          </>
+        )}
       </header>
     </div>
   );
