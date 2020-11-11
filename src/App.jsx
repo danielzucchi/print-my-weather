@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import getWeather from './services/weatherService'
+import LoaddingSpinner from './components/LoadingSpinner/LoadingSpinner'
 
 const App = () => {
   const [location, setLocation] = useState({})
@@ -17,18 +18,20 @@ const App = () => {
   }, [setLocation])
 
   const fetchWeather = () => {
+    setLoading(true)
     getWeather({
       lat: location.lat,
       lon: location.lon,
       units: 'metric',
+    }).then((todayWeather) => {
+      setLoading(false)
+      setWeather(todayWeather)
     })
-      .then((todayWeather) => setWeather(todayWeather))
-      .catch(() => console.log('Something went wrong.'))
   }
 
   const AppWrapper = styled.div`
     margin: 0 auto;
-    width: 700px;
+    width: 70%;
     background-color: #c2c2c2;
   `
 
@@ -38,8 +41,10 @@ const App = () => {
         Get weather
       </button>
       <header className="App-header">
+        {loading && <LoaddingSpinner />}
         {weather && (
           <>
+            <h2>Today</h2>
             <img
               src={`http://openweathermap.org/img/wn/${weather.current.weather[0].icon}@2x.png`}
               alt="weather"
