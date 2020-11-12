@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import getWeather from './services/weatherService'
 import TodayWeatherCard from './components/TodayWeatherCard'
+import HourlyWeatherCard from './components/HourlyWeatherCard'
 import LoaddingSpinner from './components/LoadingSpinner/LoadingSpinner'
 
 const AppWrapper = styled.div`
   margin: 0 auto;
-  width: 80%;
 `
 
 const Button = styled.button`
@@ -16,7 +16,7 @@ const Button = styled.button`
     #26a0da 51%,
     #314755 100%
   );
-  margin: 10px 10px 20px;
+  margin: 10px auto;
   padding: 15px 45px;
   text-align: center;
   text-transform: uppercase;
@@ -26,6 +26,7 @@ const Button = styled.button`
   border-radius: 10px;
   display: block;
   outline: none;
+  border: none;
 
   &:hover {
     background-position: right center;
@@ -62,24 +63,23 @@ const App = () => {
       <Button type="button" onClick={() => fetchWeather()}>
         Get weather
       </Button>
-      <header className="App-header">
-        {loading && <LoaddingSpinner />}
-        {weather && (
-          <>
-            <TodayWeatherCard todayWeather={weather.daily[0]} />
-            {weather.daily.map((day) => (
-              <div key={day.dt}>
-                <img
-                  src={`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
-                  alt="weather"
-                />
-                <p>{Math.floor(day.temp.day)}</p>
-                <p>{day.weather[0].description}</p>
-              </div>
-            ))}
-          </>
-        )}
-      </header>
+      {loading && <LoaddingSpinner />}
+      {weather && (
+        <>
+          <TodayWeatherCard todayWeather={weather.daily[0]} />
+          <HourlyWeatherCard hourlyWeather={weather.hourly} />
+          {weather.daily.map((day) => (
+            <div key={day.dt}>
+              <img
+                src={`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
+                alt="weather"
+              />
+              <p>{Math.floor(day.temp.day)}</p>
+              <p>{day.weather[0].description}</p>
+            </div>
+          ))}
+        </>
+      )}
     </AppWrapper>
   )
 }
