@@ -1,7 +1,37 @@
 import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import getWeather from './services/weatherService'
+import TodayWeatherCard from './components/TodayWeatherCard'
 import LoaddingSpinner from './components/LoadingSpinner/LoadingSpinner'
+
+const AppWrapper = styled.div`
+  margin: 0 auto;
+  width: 80%;
+`
+
+const Button = styled.button`
+  background-image: linear-gradient(
+    to right,
+    #314755 0%,
+    #26a0da 51%,
+    #314755 100%
+  );
+  margin: 10px 10px 20px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: uppercase;
+  transition: 0.5s;
+  background-size: 200% auto;
+  color: #fff;
+  border-radius: 10px;
+  display: block;
+  outline: none;
+
+  &:hover {
+    background-position: right center;
+    text-decoration: none;
+  }
+`
 
 const App = () => {
   const [location, setLocation] = useState({})
@@ -9,11 +39,9 @@ const App = () => {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setLocation({
-        lat: position.coords.latitude,
-        lon: position.coords.longitude,
-      })
+    setLocation({
+      lat: '50.3350',
+      lon: '4.6365',
     })
   }, [setLocation])
 
@@ -29,28 +57,16 @@ const App = () => {
     })
   }
 
-  const AppWrapper = styled.div`
-    margin: 0 auto;
-    width: 70%;
-    background-color: #c2c2c2;
-  `
-
   return (
     <AppWrapper>
-      <button type="button" onClick={() => fetchWeather()}>
+      <Button type="button" onClick={() => fetchWeather()}>
         Get weather
-      </button>
+      </Button>
       <header className="App-header">
         {loading && <LoaddingSpinner />}
         {weather && (
           <>
-            <h2>Today</h2>
-            <img
-              src={`http://openweathermap.org/img/wn/${weather.current.weather[0].icon}@2x.png`}
-              alt="weather"
-            />
-            <p>{Math.floor(weather.current.temp)}</p>
-            <p>{weather.current.weather[0].description}</p>
+            <TodayWeatherCard todayWeather={weather.daily[0]} />
             {weather.daily.map((day) => (
               <div key={day.dt}>
                 <img
