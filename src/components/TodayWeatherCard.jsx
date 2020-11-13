@@ -8,6 +8,7 @@ import RainIcon from '../assets/rain.svg'
 import PressureIcon from '../assets/pressure.svg'
 import SunriseIcon from '../assets/sunrise.svg'
 import SunsetIcon from '../assets/sunset.svg'
+import UVIcon from '../assets/uv.svg'
 
 const CardWrapper = styled.div`
   z-index: 100;
@@ -88,9 +89,11 @@ const TodayWeatherCard = ({ todayWeather }) => {
     humidity,
     clouds: cloudCover,
     pop: chanceOfRain,
+    rain,
     pressure,
     sunrise,
     sunset,
+    uvi,
   } = todayWeather
 
   const weatherDetails = weather[0]
@@ -98,7 +101,7 @@ const TodayWeatherCard = ({ todayWeather }) => {
 
   return (
     <CardWrapper maxTemp={maxTemp}>
-      <TodayTitle>Today in Fowey</TodayTitle>
+      <TodayTitle>Today</TodayTitle>
       <CardInner>
         <div>
           <img
@@ -125,7 +128,7 @@ const TodayWeatherCard = ({ todayWeather }) => {
           </WeatherDataPoint>
           <WeatherDataPoint>
             <WeatherIcon src={RainIcon} />
-            <span>{`Chance of showers: ${chanceOfRain * 100}%`}</span>
+            <span>{`Rain: ${chanceOfRain * 100}% chance | ${rain} mm`}</span>
           </WeatherDataPoint>
           <WeatherDataPoint>
             <WeatherIcon src={HumidityIcon} />
@@ -134,6 +137,10 @@ const TodayWeatherCard = ({ todayWeather }) => {
           <WeatherDataPoint>
             <WeatherIcon src={PressureIcon} />
             <span>{`Pressure: ${pressure / 100} mb`}</span>
+          </WeatherDataPoint>
+          <WeatherDataPoint>
+            <WeatherIcon src={UVIcon} />
+            <span>{`UV Index: ${uvi}`}</span>
           </WeatherDataPoint>
           <WeatherDataPoint>
             <WeatherIcon src={SunriseIcon} />
