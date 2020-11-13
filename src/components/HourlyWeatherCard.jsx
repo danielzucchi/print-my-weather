@@ -14,7 +14,7 @@ const CardWrapper = styled.div`
   padding: 20px 40px;
   width: 800px;
   min-height: 160px;
-  background-color: #dedfe0;
+  background-color: #dfdfdf;
 `
 
 const CardInner = styled.div`
