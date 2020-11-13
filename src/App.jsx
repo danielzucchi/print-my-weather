@@ -4,6 +4,7 @@ import getWeather from './services/weatherService'
 import TodayWeatherCard from './components/TodayWeatherCard'
 import HourlyWeatherCard from './components/HourlyWeatherCard'
 import LoaddingSpinner from './components/LoadingSpinner/LoadingSpinner'
+import HotelLogo from './assets/hotelLogo.jpeg'
 
 const AppWrapper = styled.div`
   margin: 0 auto;
@@ -32,6 +33,12 @@ const Button = styled.button`
     background-position: right center;
     text-decoration: none;
   }
+`
+
+const Logo = styled.img`
+  height: 200px;
+  width: auto;
+  margin: 20px auto;
 `
 
 const App = () => {
@@ -66,6 +73,9 @@ const App = () => {
       {loading && <LoaddingSpinner />}
       {weather && (
         <>
+          <div style={{ textAlign: 'center' }}>
+            <Logo src={HotelLogo} />
+          </div>
           <TodayWeatherCard todayWeather={weather.daily[0]} />
           <HourlyWeatherCard hourlyWeather={weather.hourly} />
         </>
