@@ -12,7 +12,7 @@ const CardWrapper = styled.div`
   display: block;
   padding: 20px 33px 22px 27px;
   width: 800px;
-  height: 170px;
+  min-height: 160px;
   background-color: white;
 `
 

@@ -68,16 +68,6 @@ const App = () => {
         <>
           <TodayWeatherCard todayWeather={weather.daily[0]} />
           <HourlyWeatherCard hourlyWeather={weather.hourly} />
-          {weather.daily.map((day) => (
-            <div key={day.dt}>
-              <img
-                src={`http://openweathermap.org/img/wn/${day.weather[0].icon}@2x.png`}
-                alt="weather"
-              />
-              <p>{Math.floor(day.temp.day)}</p>
-              <p>{day.weather[0].description}</p>
-            </div>
-          ))}
         </>
       )}
     </AppWrapper>
