@@ -73,7 +73,11 @@ const App = () => {
       <div style={{ textAlign: 'center' }}>
         <Logo src={HotelLogo} />
       </div>
-      {loading && <LoaddingSpinner />}
+      {loading && (
+        <div style={{ textAlign: 'center' }}>
+          <LoaddingSpinner />
+        </div>
+      )}
       {weather && (
         <>
           <TodayWeatherCard todayWeather={weather.daily[0]} />
