@@ -62,7 +62,7 @@ const TempWrapper = styled.div`
 
 const DetailsWrapper = styled.div`
   display: flex;
-  margin-left: 90px;
+  margin-left: 100px;
   flex-direction: column;
   align-content: right;
   width: 100%;

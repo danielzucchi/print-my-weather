@@ -70,12 +70,16 @@ const App = () => {
       <Button type="button" onClick={() => fetchWeather()}>
         Get weather
       </Button>
-      {loading && <LoaddingSpinner />}
+      <div style={{ textAlign: 'center' }}>
+        <Logo src={HotelLogo} />
+      </div>
+      {loading && (
+        <div style={{ textAlign: 'center' }}>
+          <LoaddingSpinner />
+        </div>
+      )}
       {weather && (
         <>
-          <div style={{ textAlign: 'center' }}>
-            <Logo src={HotelLogo} />
-          </div>
           <TodayWeatherCard todayWeather={weather.daily[0]} />
           <HourlyWeatherCard hourlyWeather={weather.hourly} />
         </>
