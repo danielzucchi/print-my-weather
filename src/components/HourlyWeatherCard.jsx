@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import RainIcon from '../assets/rain-blue.svg'
 
 const CardWrapper = styled.div`
-  margin: 15px auto;
+  margin: 10px auto;
   z-index: -100;
   width: 90%;
   border-radius: 15px;
@@ -28,7 +28,7 @@ const DetailsWrapper = styled.div`
   flex-direction: column;
   align-content: center;
   margin: 0;
-  padding-right: 35px;
+  padding-right: 30px;
   border-right: 1px solid #999999;
 `
 
@@ -43,29 +43,34 @@ const DetailsWrapperLast = styled.div`
 
 const Hour = styled.p`
   text-align: center;
-  font-size: 1.3em;
+  font-size: 1.2em;
   margin: 0;
 `
 
 const Temp = styled.p`
   text-align: center;
-  font-size: 2em;
+  font-size: 1.5em;
   font-weight: bold;
   margin: 0;
-  margin-bottom: -20px;
+  margin-bottom: -10px;
   color: #2d6b8b;
 `
 
 const WeatherDataPoint = styled.div`
-  margin: 5px auto;
-  font-size: 1.2em;
+  margin: 0 auto;
+  font-size: 1em;
 `
 
 const WeatherIcon = styled.img`
-  height: 30px;
+  height: 20px;
   width: auto;
   float: left;
-  margin: 0 10px;
+  margin: 0 5px 0 0;
+`
+
+const WeatherImage = styled.img`
+  width: 70px;
+  height: 70px;
 `
 
 const HourlyWeatherCard = ({ hourlyWeather }) => {
@@ -77,7 +82,7 @@ const HourlyWeatherCard = ({ hourlyWeather }) => {
             {new Date(hourlyWeather[1].dt * 1000).toUTCString().slice(17, 22)}
           </Hour>
           <Temp>{`${Math.floor(hourlyWeather[1].temp)}º`}</Temp>
-          <img
+          <WeatherImage
             src={`http://openweathermap.org/img/wn/${hourlyWeather[1].weather[0].icon}@2x.png`}
             alt="weather"
           />
@@ -88,30 +93,44 @@ const HourlyWeatherCard = ({ hourlyWeather }) => {
         </DetailsWrapper>
         <DetailsWrapper>
           <Hour>
-            {new Date(hourlyWeather[5].dt * 1000).toUTCString().slice(16, 22)}
+            {new Date(hourlyWeather[4].dt * 1000).toUTCString().slice(16, 22)}
           </Hour>
-          <Temp>{`${Math.floor(hourlyWeather[5].temp)}º`}</Temp>
-          <img
-            src={`http://openweathermap.org/img/wn/${hourlyWeather[5].weather[0].icon}@2x.png`}
+          <Temp>{`${Math.floor(hourlyWeather[4].temp)}º`}</Temp>
+          <WeatherImage
+            src={`http://openweathermap.org/img/wn/${hourlyWeather[4].weather[0].icon}@2x.png`}
             alt="weather"
           />
           <WeatherDataPoint>
             <WeatherIcon src={RainIcon} />
-            <span>{`${hourlyWeather[5].pop * 100}%`}</span>
+            <span>{`${hourlyWeather[4].pop * 100}%`}</span>
           </WeatherDataPoint>
         </DetailsWrapper>
         <DetailsWrapper>
           <Hour>
-            {new Date(hourlyWeather[9].dt * 1000).toUTCString().slice(17, 22)}
+            {new Date(hourlyWeather[7].dt * 1000).toUTCString().slice(17, 22)}
           </Hour>
-          <Temp>{`${Math.floor(hourlyWeather[9].temp)}º`}</Temp>
-          <img
-            src={`http://openweathermap.org/img/wn/${hourlyWeather[9].weather[0].icon}@2x.png`}
+          <Temp>{`${Math.floor(hourlyWeather[7].temp)}º`}</Temp>
+          <WeatherImage
+            src={`http://openweathermap.org/img/wn/${hourlyWeather[7].weather[0].icon}@2x.png`}
             alt="weather"
           />
           <WeatherDataPoint>
             <WeatherIcon src={RainIcon} />
-            <span>{`${hourlyWeather[9].pop * 100}%`}</span>
+            <span>{`${hourlyWeather[7].pop * 100}%`}</span>
+          </WeatherDataPoint>
+        </DetailsWrapper>
+        <DetailsWrapper>
+          <Hour>
+            {new Date(hourlyWeather[10].dt * 1000).toUTCString().slice(17, 22)}
+          </Hour>
+          <Temp>{`${Math.floor(hourlyWeather[10].temp)}º`}</Temp>
+          <WeatherImage
+            src={`http://openweathermap.org/img/wn/${hourlyWeather[10].weather[0].icon}@2x.png`}
+            alt="weather"
+          />
+          <WeatherDataPoint>
+            <WeatherIcon src={RainIcon} />
+            <span>{`${hourlyWeather[10].pop * 100}%`}</span>
           </WeatherDataPoint>
         </DetailsWrapper>
         <DetailsWrapperLast>
@@ -119,7 +138,7 @@ const HourlyWeatherCard = ({ hourlyWeather }) => {
             {new Date(hourlyWeather[13].dt * 1000).toUTCString().slice(17, 22)}
           </Hour>
           <Temp>{`${Math.floor(hourlyWeather[13].temp)}º`}</Temp>
-          <img
+          <WeatherImage
             src={`http://openweathermap.org/img/wn/${hourlyWeather[13].weather[0].icon}@2x.png`}
             alt="weather"
           />

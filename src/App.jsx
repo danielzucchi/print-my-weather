@@ -3,6 +3,7 @@ import styled from 'styled-components'
 import getWeather from './services/weatherService'
 import TodayWeatherCard from './components/TodayWeatherCard'
 import HourlyWeatherCard from './components/HourlyWeatherCard'
+import DayWeatherCard from './components/DayWeatherCard'
 import LoaddingSpinner from './components/LoadingSpinner/LoadingSpinner'
 import HotelLogo from './assets/hotelLogo.jpeg'
 
@@ -39,6 +40,11 @@ const Logo = styled.img`
   height: 200px;
   width: auto;
   margin: 20px auto;
+`
+
+const DailyWeatherCard = styled.li`
+  list-style: none;
+  margin: 10px 0;
 `
 
 const App = () => {
@@ -82,6 +88,31 @@ const App = () => {
         <>
           <TodayWeatherCard todayWeather={weather.daily[0]} />
           <HourlyWeatherCard hourlyWeather={weather.hourly} />
+          {weather.daily
+            .filter((item, index) => index !== 0)
+            .slice(0, -2)
+            .map((day) => {
+              const {
+                dt: date,
+                pop: chanceOfRain,
+                temp: { max: maxTemp, min: minTemp },
+                weather: weatherDetails,
+              } = day
+              const weatherDetailsPoint = weatherDetails[0]
+              const { icon, description } = weatherDetailsPoint
+              return (
+                <DailyWeatherCard>
+                  <DayWeatherCard
+                    date={date}
+                    chanceOfRain={chanceOfRain}
+                    maxTemp={maxTemp}
+                    minTemp={minTemp}
+                    icon={icon}
+                    description={description}
+                  />
+                </DailyWeatherCard>
+              )
+            })}
         </>
       )}
     </AppWrapper>

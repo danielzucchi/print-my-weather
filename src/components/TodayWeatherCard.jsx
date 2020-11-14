@@ -17,7 +17,7 @@ const CardWrapper = styled.div`
   justify-content: center;
   box-sizing: border-box;
   display: block;
-  padding: 20px 33px 22px 27px;
+  padding: 20px 30px;
   width: 700px;
   background-image: ${({ maxTemp }) => getBackgroundColor({ maxTemp })};
 `
