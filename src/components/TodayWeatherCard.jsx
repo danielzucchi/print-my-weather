@@ -5,7 +5,6 @@ import WindIcon from '../assets/wind.svg'
 import HumidityIcon from '../assets/humidity.svg'
 import CloudCoverIcon from '../assets/cloud.svg'
 import RainIcon from '../assets/rain.svg'
-import PressureIcon from '../assets/pressure.svg'
 import SunriseIcon from '../assets/sunrise.svg'
 import SunsetIcon from '../assets/sunset.svg'
 import UVIcon from '../assets/uv.svg'
@@ -14,14 +13,12 @@ const CardWrapper = styled.div`
   z-index: 100;
   color: #fff;
   margin: 0 auto;
-  width: 90%;
   border-radius: 15px;
   justify-content: center;
-  box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.2);
   box-sizing: border-box;
   display: block;
   padding: 20px 33px 22px 27px;
-  width: 800px;
+  width: 700px;
   background-image: ${({ maxTemp }) => getBackgroundColor({ maxTemp })};
 `
 
@@ -29,7 +26,6 @@ const CardInner = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-bottom: 20px;
 `
 
 const TodayTitle = styled.h1`
@@ -63,7 +59,7 @@ const TempWrapper = styled.div`
 
 const DetailsWrapper = styled.div`
   display: flex;
-  margin-left: 100px;
+  margin-left: 80px;
   flex-direction: column;
   align-content: right;
   width: 100%;
@@ -90,7 +86,6 @@ const TodayWeatherCard = ({ todayWeather }) => {
     clouds: cloudCover,
     pop: chanceOfRain,
     rain,
-    pressure,
     sunrise,
     sunset,
     uvi,
@@ -133,10 +128,6 @@ const TodayWeatherCard = ({ todayWeather }) => {
           <WeatherDataPoint>
             <WeatherIcon src={HumidityIcon} />
             <span>{`Humidity: ${humidity}%`}</span>
-          </WeatherDataPoint>
-          <WeatherDataPoint>
-            <WeatherIcon src={PressureIcon} />
-            <span>{`Pressure: ${pressure / 100} mb`}</span>
           </WeatherDataPoint>
           <WeatherDataPoint>
             <WeatherIcon src={UVIcon} />
