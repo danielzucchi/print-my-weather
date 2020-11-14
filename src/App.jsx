@@ -36,6 +36,14 @@ const Button = styled.button`
   }
 `
 
+const ButtonWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 50%;
+  margin: 0 auto;
+`
+
 const Logo = styled.img`
   height: 200px;
   width: auto;
@@ -73,9 +81,12 @@ const App = () => {
 
   return (
     <AppWrapper>
-      <Button type="button" onClick={() => fetchWeather()}>
-        Get weather
-      </Button>
+      <ButtonWrapper>
+        <Button type="button" onClick={() => fetchWeather()}>
+          Get weather
+        </Button>
+        <Button type="button">Print to PDF</Button>
+      </ButtonWrapper>
       <div style={{ textAlign: 'center' }}>
         <Logo src={HotelLogo} />
       </div>
