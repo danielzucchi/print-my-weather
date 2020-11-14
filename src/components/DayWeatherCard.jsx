@@ -41,7 +41,7 @@ const WeatherLabel = styled.p`
   font-size: 1rem;
   text-align: center;
   text-transform: capitalize;
-  padding: 0 10px 0 0;
+  margin: 0 10px;
   width: 70px;
 `
 
