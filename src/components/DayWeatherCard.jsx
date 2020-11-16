@@ -47,7 +47,7 @@ const WeatherLabel = styled.p`
 
 const WeatherDataPoint = styled.div`
   margin: 0;
-  margin-left: 20px;
+  margin-left: 10px;
   font-size: 1.2em;
   left: 100px;
 `
@@ -76,11 +76,11 @@ const DayWeatherCard = ({
           alt="weather"
         />
         <WeatherLabel>{description}</WeatherLabel>
-        <MaxTempValue>{`${Math.floor(maxTemp)}º`}</MaxTempValue>
-        <MinTempValue>{`${Math.floor(minTemp)}º`}</MinTempValue>
+        <MaxTempValue>{`${Math.round(maxTemp)}º`}</MaxTempValue>
+        <MinTempValue>{`${Math.round(minTemp)}º`}</MinTempValue>
         <WeatherDataPoint>
           <WeatherIcon src={RainIcon} />
-          <span>{`${chanceOfRain * 100}%`}</span>
+          <span>{`${Math.round(chanceOfRain * 100)}%`}</span>
         </WeatherDataPoint>
       </CardInner>
     </CardWrapper>

@@ -106,8 +106,8 @@ const TodayWeatherCard = ({ todayWeather }) => {
           <WeatherLabel>{weatherDescription}</WeatherLabel>
         </div>
         <TempWrapper>
-          <MaxTempValue>{`${Math.floor(maxTemp)}º`}</MaxTempValue>
-          <MinTempValue>{`${Math.floor(minTemp)}º`}</MinTempValue>
+          <MaxTempValue>{`${Math.round(maxTemp)}º`}</MaxTempValue>
+          <MinTempValue>{`${Math.round(minTemp)}º`}</MinTempValue>
         </TempWrapper>
         <DetailsWrapper>
           <WeatherDataPoint>
@@ -123,7 +123,9 @@ const TodayWeatherCard = ({ todayWeather }) => {
           </WeatherDataPoint>
           <WeatherDataPoint>
             <WeatherIcon src={RainIcon} />
-            <span>{`Rain: ${chanceOfRain * 100}% chance | ${rain} mm`}</span>
+            <span>
+              {`Rain: ${Math.round(chanceOfRain * 100)}% chance | ${rain} mm`}
+            </span>
           </WeatherDataPoint>
           <WeatherDataPoint>
             <WeatherIcon src={HumidityIcon} />

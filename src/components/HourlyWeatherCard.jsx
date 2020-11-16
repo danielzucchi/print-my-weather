@@ -81,70 +81,70 @@ const HourlyWeatherCard = ({ hourlyWeather }) => {
           <Hour>
             {new Date(hourlyWeather[1].dt * 1000).toUTCString().slice(17, 22)}
           </Hour>
-          <Temp>{`${Math.floor(hourlyWeather[1].temp)}º`}</Temp>
+          <Temp>{`${Math.round(hourlyWeather[1].temp)}º`}</Temp>
           <WeatherImage
             src={`http://openweathermap.org/img/wn/${hourlyWeather[1].weather[0].icon}@2x.png`}
             alt="weather"
           />
           <WeatherDataPoint>
             <WeatherIcon src={RainIcon} />
-            <span>{`${hourlyWeather[1].pop * 100}%`}</span>
+            <span>{`${Math.round(hourlyWeather[1].pop * 100)}%`}</span>
           </WeatherDataPoint>
         </DetailsWrapper>
         <DetailsWrapper>
           <Hour>
             {new Date(hourlyWeather[4].dt * 1000).toUTCString().slice(16, 22)}
           </Hour>
-          <Temp>{`${Math.floor(hourlyWeather[4].temp)}º`}</Temp>
+          <Temp>{`${Math.round(hourlyWeather[4].temp)}º`}</Temp>
           <WeatherImage
             src={`http://openweathermap.org/img/wn/${hourlyWeather[4].weather[0].icon}@2x.png`}
             alt="weather"
           />
           <WeatherDataPoint>
             <WeatherIcon src={RainIcon} />
-            <span>{`${hourlyWeather[4].pop * 100}%`}</span>
+            <span>{`${Math.round(hourlyWeather[4].pop * 100)}%`}</span>
           </WeatherDataPoint>
         </DetailsWrapper>
         <DetailsWrapper>
           <Hour>
             {new Date(hourlyWeather[7].dt * 1000).toUTCString().slice(17, 22)}
           </Hour>
-          <Temp>{`${Math.floor(hourlyWeather[7].temp)}º`}</Temp>
+          <Temp>{`${Math.round(hourlyWeather[7].temp)}º`}</Temp>
           <WeatherImage
             src={`http://openweathermap.org/img/wn/${hourlyWeather[7].weather[0].icon}@2x.png`}
             alt="weather"
           />
           <WeatherDataPoint>
             <WeatherIcon src={RainIcon} />
-            <span>{`${hourlyWeather[7].pop * 100}%`}</span>
+            <span>{`${Math.round(hourlyWeather[7].pop * 100)}%`}</span>
           </WeatherDataPoint>
         </DetailsWrapper>
         <DetailsWrapper>
           <Hour>
             {new Date(hourlyWeather[10].dt * 1000).toUTCString().slice(17, 22)}
           </Hour>
-          <Temp>{`${Math.floor(hourlyWeather[10].temp)}º`}</Temp>
+          <Temp>{`${Math.round(hourlyWeather[10].temp)}º`}</Temp>
           <WeatherImage
             src={`http://openweathermap.org/img/wn/${hourlyWeather[10].weather[0].icon}@2x.png`}
             alt="weather"
           />
           <WeatherDataPoint>
             <WeatherIcon src={RainIcon} />
-            <span>{`${hourlyWeather[10].pop * 100}%`}</span>
+            <span>{`${Math.round(hourlyWeather[10].pop * 100)}%`}</span>
           </WeatherDataPoint>
         </DetailsWrapper>
         <DetailsWrapperLast>
           <Hour>
             {new Date(hourlyWeather[13].dt * 1000).toUTCString().slice(17, 22)}
           </Hour>
-          <Temp>{`${Math.floor(hourlyWeather[13].temp)}º`}</Temp>
+          <Temp>{`${Math.round(hourlyWeather[13].temp)}º`}</Temp>
           <WeatherImage
             src={`http://openweathermap.org/img/wn/${hourlyWeather[13].weather[0].icon}@2x.png`}
             alt="weather"
           />
           <WeatherDataPoint>
             <WeatherIcon src={RainIcon} />
-            <span>{`${hourlyWeather[13].pop * 100}%`}</span>
+            <span>{`${Math.round(hourlyWeather[13].pop * 100)}%`}</span>
           </WeatherDataPoint>
         </DetailsWrapperLast>
       </CardInner>
