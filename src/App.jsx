@@ -112,7 +112,7 @@ const App = () => {
               const weatherDetailsPoint = weatherDetails[0]
               const { icon, description } = weatherDetailsPoint
               return (
-                <DailyWeatherCard>
+                <DailyWeatherCard key={date}>
                   <DayWeatherCard
                     date={date}
                     chanceOfRain={chanceOfRain}

@@ -119,7 +119,7 @@ const TodayWeatherCard = ({ todayWeather }) => {
           </WeatherDataPoint>
           <WeatherDataPoint>
             <WeatherIcon src={CloudCoverIcon} />
-            <span>{`Cloudiness: ${cloudCover}%`}</span>
+            <span>{`Cloudiness: ${Math.round(cloudCover)}%`}</span>
           </WeatherDataPoint>
           <WeatherDataPoint>
             <WeatherIcon src={RainIcon} />
@@ -129,7 +129,7 @@ const TodayWeatherCard = ({ todayWeather }) => {
           </WeatherDataPoint>
           <WeatherDataPoint>
             <WeatherIcon src={HumidityIcon} />
-            <span>{`Humidity: ${humidity}%`}</span>
+            <span>{`Humidity: ${Math.round(humidity)}%`}</span>
           </WeatherDataPoint>
           <WeatherDataPoint>
             <WeatherIcon src={UVIcon} />
