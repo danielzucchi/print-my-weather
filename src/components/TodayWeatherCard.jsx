@@ -165,7 +165,7 @@ TodayWeatherCard.propTypes = {
         description: PropTypes.string,
       }),
     ),
-    temp: { max: PropTypes.number, min: PropTypes.number },
+    temp: PropTypes.shape({ max: PropTypes.number, min: PropTypes.number }),
     wind_speed: PropTypes.number,
     wind_deg: PropTypes.number,
     humidity: PropTypes.number,
