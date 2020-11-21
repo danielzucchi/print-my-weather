@@ -12,7 +12,14 @@ const AppWrapper = styled.div`
 
   @media print {
     margin-top: -60px;
-    zoom: 70%;
+    margin-bottom: 0;
+    zoom: 0.7;
+    -webkit-print-color-adjust: exact;
+  }
+
+  @page {
+    size: A4;
+    page-break-after: always;
   }
 `
 
