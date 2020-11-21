@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import getBackgroundColor from './getBackgroundColor'
 import WindIcon from '../assets/wind.svg'
@@ -154,6 +155,27 @@ const TodayWeatherCard = ({ todayWeather }) => {
       </CardInner>
     </CardWrapper>
   )
+}
+
+TodayWeatherCard.propTypes = {
+  todayWeather: PropTypes.shape({
+    weather: PropTypes.arrayOf(
+      PropTypes.shape({
+        icon: PropTypes.string,
+        description: PropTypes.string,
+      }),
+    ),
+    temp: { max: PropTypes.number, min: PropTypes.number },
+    wind_speed: PropTypes.number,
+    wind_deg: PropTypes.number,
+    humidity: PropTypes.number,
+    clouds: PropTypes.number,
+    pop: PropTypes.number,
+    rain: PropTypes.number,
+    sunrise: PropTypes.number,
+    sunset: PropTypes.number,
+    uvi: PropTypes.number,
+  }).isRequired,
 }
 
 export default TodayWeatherCard

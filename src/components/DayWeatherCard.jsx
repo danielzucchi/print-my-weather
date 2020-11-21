@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 import getBackgroundColor from './getBackgroundColor'
 import RainIcon from '../assets/rain.svg'
@@ -85,6 +86,15 @@ const DayWeatherCard = ({
       </CardInner>
     </CardWrapper>
   )
+}
+
+DayWeatherCard.propTypes = {
+  date: PropTypes.number.isRequired,
+  chanceOfRain: PropTypes.number.isRequired,
+  maxTemp: PropTypes.number.isRequired,
+  minTemp: PropTypes.number.isRequired,
+  description: PropTypes.string.isRequired,
+  icon: PropTypes.string.isRequired,
 }
 
 export default DayWeatherCard
