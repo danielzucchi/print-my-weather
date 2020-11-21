@@ -5,6 +5,7 @@ import TodayWeatherCard from './components/TodayWeatherCard'
 import HourlyWeatherCard from './components/HourlyWeatherCard'
 import DayWeatherCard from './components/DayWeatherCard'
 import LoaddingSpinner from './components/LoadingSpinner/LoadingSpinner'
+import ErrorMessage from './components/ErrorMessage'
 import HotelLogo from './assets/hotelLogo.jpeg'
 
 const AppWrapper = styled.div`
@@ -70,6 +71,7 @@ const App = () => {
   const [location, setLocation] = useState({})
   const [weather, setWeather] = useState(null)
   const [loading, setLoading] = useState(false)
+  const [error, setError] = useState(null)
 
   useEffect(() => {
     setLocation({
@@ -79,15 +81,23 @@ const App = () => {
   }, [setLocation])
 
   const fetchWeather = () => {
+    setError(null)
     setLoading(true)
     getWeather({
       lat: location.lat,
       lon: location.lon,
       units: 'metric',
-    }).then((todayWeather) => {
-      setLoading(false)
-      setWeather(todayWeather)
     })
+      .then((todayWeather) => {
+        setLoading(false)
+        setWeather(todayWeather)
+      })
+      .catch(() => {
+        setError(
+          'An error has occurred. Try refreshing the page and clicking to get weather again.',
+        )
+        setLoading(false)
+      })
   }
 
   const printToPdf = () => {
@@ -107,6 +117,7 @@ const App = () => {
       <div style={{ textAlign: 'center' }}>
         <Logo src={HotelLogo} />
       </div>
+      {error && <ErrorMessage error={error} />}
       {loading && (
         <div style={{ textAlign: 'center' }}>
           <LoaddingSpinner />
