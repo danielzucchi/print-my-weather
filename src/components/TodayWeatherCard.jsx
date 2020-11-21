@@ -124,7 +124,8 @@ const TodayWeatherCard = ({ todayWeather }) => {
           <WeatherDataPoint>
             <WeatherIcon src={RainIcon} />
             <span>
-              {`Rain: ${Math.round(chanceOfRain * 100)}% chance | ${rain} mm`}
+              {`Rain: ${Math.round(chanceOfRain * 100)}% chance`}
+              {rain ? ` | ${rain} mm` : null}
             </span>
           </WeatherDataPoint>
           <WeatherDataPoint>
