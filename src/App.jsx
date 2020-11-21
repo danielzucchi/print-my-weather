@@ -19,7 +19,6 @@ const AppWrapper = styled.div`
 
   @page {
     size: A4;
-    page-break-after: always;
   }
 `
 
@@ -105,47 +104,45 @@ const App = () => {
           Print Weather
         </Button>
       </ButtonWrapper>
-      <div id="print">
-        <div style={{ textAlign: 'center' }}>
-          <Logo src={HotelLogo} />
-        </div>
-        {loading && (
-          <div style={{ textAlign: 'center' }}>
-            <LoaddingSpinner />
-          </div>
-        )}
-        {weather && (
-          <>
-            <TodayWeatherCard todayWeather={weather.daily[0]} />
-            <HourlyWeatherCard hourlyWeather={weather.hourly} />
-            {weather.daily
-              .filter((item, index) => index !== 0)
-              .slice(0, -2)
-              .map((day) => {
-                const {
-                  dt: date,
-                  pop: chanceOfRain,
-                  temp: { max: maxTemp, min: minTemp },
-                  weather: weatherDetails,
-                } = day
-                const weatherDetailsPoint = weatherDetails[0]
-                const { icon, description } = weatherDetailsPoint
-                return (
-                  <DailyWeatherCard key={date}>
-                    <DayWeatherCard
-                      date={date}
-                      chanceOfRain={chanceOfRain}
-                      maxTemp={maxTemp}
-                      minTemp={minTemp}
-                      icon={icon}
-                      description={description}
-                    />
-                  </DailyWeatherCard>
-                )
-              })}
-          </>
-        )}
+      <div style={{ textAlign: 'center' }}>
+        <Logo src={HotelLogo} />
       </div>
+      {loading && (
+        <div style={{ textAlign: 'center' }}>
+          <LoaddingSpinner />
+        </div>
+      )}
+      {weather && (
+        <>
+          <TodayWeatherCard todayWeather={weather.daily[0]} />
+          <HourlyWeatherCard hourlyWeather={weather.hourly} />
+          {weather.daily
+            .filter((item, index) => index !== 0)
+            .slice(0, -2)
+            .map((day) => {
+              const {
+                dt: date,
+                pop: chanceOfRain,
+                temp: { max: maxTemp, min: minTemp },
+                weather: weatherDetails,
+              } = day
+              const weatherDetailsPoint = weatherDetails[0]
+              const { icon, description } = weatherDetailsPoint
+              return (
+                <DailyWeatherCard key={date}>
+                  <DayWeatherCard
+                    date={date}
+                    chanceOfRain={chanceOfRain}
+                    maxTemp={maxTemp}
+                    minTemp={minTemp}
+                    icon={icon}
+                    description={description}
+                  />
+                </DailyWeatherCard>
+              )
+            })}
+        </>
+      )}
     </AppWrapper>
   )
 }

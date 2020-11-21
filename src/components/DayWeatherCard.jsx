@@ -26,6 +26,7 @@ const DayLabel = styled.p`
   text-align: center;
   font-size: 1.3em;
   margin: 0;
+  width: 50px;
 `
 
 const MaxTempValue = styled.p`
@@ -42,14 +43,13 @@ const WeatherLabel = styled.p`
   text-align: center;
   text-transform: capitalize;
   margin: 0 10px;
-  width: 70px;
+  max-width: 70px;
 `
 
 const WeatherDataPoint = styled.div`
   margin: 0;
-  margin-left: 10px;
+  margin-left: 15px;
   font-size: 1.2em;
-  left: 100px;
 `
 
 const WeatherIcon = styled.img`
