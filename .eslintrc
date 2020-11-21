@@ -7,6 +7,7 @@
   ],
   "plugins": ["react", "prettier"],
   "rules": {
+    "failOnError": 0,
     "react/jsx-props-no-spreading": [
       "error",
       {
