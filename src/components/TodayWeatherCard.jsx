@@ -51,7 +51,7 @@ const WeatherLabel = styled.p`
 
 const TempWrapper = styled.div`
   display: flex;
-  margin: 0;
+  margin: 0 10px;
   flex-direction: column;
   text-align: right;
   justify-content: center;
@@ -59,7 +59,7 @@ const TempWrapper = styled.div`
 
 const DetailsWrapper = styled.div`
   display: flex;
-  margin-left: 80px;
+  margin-left: 70px;
   flex-direction: column;
   align-content: right;
   width: 100%;
