@@ -9,6 +9,11 @@ import HotelLogo from './assets/hotelLogo.jpeg'
 
 const AppWrapper = styled.div`
   margin: 0 auto;
+
+  @media print {
+    margin-top: -60px;
+    zoom: 70%;
+  }
 `
 
 const Button = styled.button`
@@ -47,7 +52,7 @@ const ButtonWrapper = styled.div`
 const Logo = styled.img`
   height: 200px;
   width: auto;
-  margin: 20px auto;
+  margin: 40px auto 20px auto;
 `
 
 const DailyWeatherCard = styled.li`
@@ -79,53 +84,61 @@ const App = () => {
     })
   }
 
+  const printToPdf = () => {
+    window.print()
+  }
+
   return (
     <AppWrapper>
       <ButtonWrapper>
         <Button type="button" onClick={() => fetchWeather()}>
           Get weather
         </Button>
-        <Button type="button">Print to PDF</Button>
+        <Button type="button" onClick={() => printToPdf()}>
+          Print Weather
+        </Button>
       </ButtonWrapper>
-      <div style={{ textAlign: 'center' }}>
-        <Logo src={HotelLogo} />
-      </div>
-      {loading && (
+      <div id="print">
         <div style={{ textAlign: 'center' }}>
-          <LoaddingSpinner />
+          <Logo src={HotelLogo} />
         </div>
-      )}
-      {weather && (
-        <>
-          <TodayWeatherCard todayWeather={weather.daily[0]} />
-          <HourlyWeatherCard hourlyWeather={weather.hourly} />
-          {weather.daily
-            .filter((item, index) => index !== 0)
-            .slice(0, -2)
-            .map((day) => {
-              const {
-                dt: date,
-                pop: chanceOfRain,
-                temp: { max: maxTemp, min: minTemp },
-                weather: weatherDetails,
-              } = day
-              const weatherDetailsPoint = weatherDetails[0]
-              const { icon, description } = weatherDetailsPoint
-              return (
-                <DailyWeatherCard key={date}>
-                  <DayWeatherCard
-                    date={date}
-                    chanceOfRain={chanceOfRain}
-                    maxTemp={maxTemp}
-                    minTemp={minTemp}
-                    icon={icon}
-                    description={description}
-                  />
-                </DailyWeatherCard>
-              )
-            })}
-        </>
-      )}
+        {loading && (
+          <div style={{ textAlign: 'center' }}>
+            <LoaddingSpinner />
+          </div>
+        )}
+        {weather && (
+          <>
+            <TodayWeatherCard todayWeather={weather.daily[0]} />
+            <HourlyWeatherCard hourlyWeather={weather.hourly} />
+            {weather.daily
+              .filter((item, index) => index !== 0)
+              .slice(0, -2)
+              .map((day) => {
+                const {
+                  dt: date,
+                  pop: chanceOfRain,
+                  temp: { max: maxTemp, min: minTemp },
+                  weather: weatherDetails,
+                } = day
+                const weatherDetailsPoint = weatherDetails[0]
+                const { icon, description } = weatherDetailsPoint
+                return (
+                  <DailyWeatherCard key={date}>
+                    <DayWeatherCard
+                      date={date}
+                      chanceOfRain={chanceOfRain}
+                      maxTemp={maxTemp}
+                      minTemp={minTemp}
+                      icon={icon}
+                      description={description}
+                    />
+                  </DailyWeatherCard>
+                )
+              })}
+          </>
+        )}
+      </div>
     </AppWrapper>
   )
 }
